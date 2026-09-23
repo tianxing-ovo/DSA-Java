@@ -2,11 +2,15 @@ package leetcode.kmp;
 
 /**
  * 28.找出字符串中第一个匹配项的下标
+ *
+ * @author tianxing
  */
 public class 找出字符串中第一个匹配项的下标 {
     public static void main(String[] args) {
-        String haystack = "aabaabaaf"; // 文本串
-        String needle = "aabaaf"; // 模式串
+        // 文本串
+        String haystack = "aabaabaaf";
+        // 模式串
+        String needle = "aabaaf";
         System.out.println(strStr(haystack, needle));
     }
 

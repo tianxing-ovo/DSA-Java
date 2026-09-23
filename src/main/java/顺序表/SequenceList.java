@@ -1,8 +1,6 @@
 package 顺序表;
 
 
-import com.sun.istack.internal.NotNull;
-
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -120,7 +118,6 @@ public class SequenceList<T> implements Iterable<T> {
     /**
      * 遍历集合中的元素
      */
-    @NotNull
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
