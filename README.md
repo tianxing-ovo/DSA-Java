@@ -2,12 +2,10 @@
 
 > 基于 Java 的数据结构算法与 LeetCode 题解
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Language-Java%208+-blue.svg" alt="Java">
-  <img src="https://img.shields.io/badge/Build-Maven%203+-orange.svg" alt="Maven">
-  <img src="https://img.shields.io/badge/Test-JUnit%205-green.svg" alt="JUnit 5">
-  <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License">
-</p>
+![Java](https://img.shields.io/badge/Language-Java%208+-blue.svg)
+![Maven](https://img.shields.io/badge/Build-Maven%203+-orange.svg)
+![JUnit 5](https://img.shields.io/badge/Test-JUnit%205-green.svg)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
 ---
 
@@ -45,29 +43,32 @@ DSA-Java
 ├── README.md
 └── src
     ├── main/java
+    │   ├── bloomfilter/
+    │   ├── disjointset/
     │   ├── leetcode/
+    │   │   ├── dp/
+    │   │   ├── greedy/
+    │   │   ├── hash/
     │   │   ├── kmp/
-    │   │   ├── 动态规划/
-    │   │   ├── 双指针/
-    │   │   ├── 哈希/
-    │   │   ├── 快速幂/
-    │   │   └── 贪心/
-    │   ├── util/
-    │   ├── 布隆过滤器/
-    │   ├── 并查集/
-    │   ├── 排序/
-    │   │   ├── 简单排序/
-    │   │   └── 高级排序/
-    │   ├── 系统设计/
-    │   │   └── 三级分类/
-    │   ├── 链表/
-    │   └── 顺序表/
+    │   │   ├── pointer/
+    │   │   └── power/
+    │   ├── list/
+    │   │   ├── linked/
+    │   │   └── sequence/
+    │   ├── sort/
+    │   │   ├── advanced/
+    │   │   └── simple/
+    │   ├── systemdesign/
+    │   │   └── category/
+    │   └── util/
     └── test/java
-        ├── 布隆过滤器/
-        ├── 并查集/
-        ├── 排序/简单排序/
-        ├── 链表/
-        └── 顺序表/
+        ├── bloomfilter/
+        ├── disjointset/
+        ├── list/
+        │   ├── linked/
+        │   └── sequence/
+        └── sort/
+            └── simple/
 ```
 
 ---
@@ -104,35 +105,35 @@ DSA-Java
 
 ### 经典排序算法
 
-|      排序算法      | 平均时间复杂度 |    最好情况    |    最坏情况    |  空间复杂度  | 稳定性 |
-| :----------------: | :-------------: | :-------------: | :-------------: | :-----------: | :----: |
-| **冒泡排序** |   $O(n^2)$   |    $O(n)$    |   $O(n^2)$   |   $O(1)$   |  稳定  |
-| **选择排序** |   $O(n^2)$   |   $O(n^2)$   |   $O(n^2)$   |   $O(1)$   | 不稳定 |
-| **插入排序** |   $O(n^2)$   |    $O(n)$    |   $O(n^2)$   |   $O(1)$   |  稳定  |
-| **希尔排序** | $O(n^{1.3})$ | $O(n \log n)$ | $O(n^{1.5})$ |   $O(1)$   | 不稳定 |
-| **归并排序** | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ |   $O(n)$   |  稳定  |
-| **快速排序** | $O(n \log n)$ | $O(n \log n)$ |   $O(n^2)$   | $O(\log n)$ | 不稳定 |
+|   排序算法   | 平均时间复杂度 |   最好情况    |   最坏情况    | 空间复杂度  | 稳定性 |
+|:------------:|:--------------:|:-------------:|:-------------:|:-----------:|:------:|
+| **冒泡排序** |    $O(n^2)$    |    $O(n)$     |   $O(n^2)$    |   $O(1)$    |  稳定  |
+| **选择排序** |    $O(n^2)$    |   $O(n^2)$    |   $O(n^2)$    |   $O(1)$    | 不稳定 |
+| **插入排序** |    $O(n^2)$    |    $O(n)$     |   $O(n^2)$    |   $O(1)$    |  稳定  |
+| **希尔排序** |  $O(n^{1.3})$  | $O(n \log n)$ | $O(n^{1.5})$  |   $O(1)$    | 不稳定 |
+| **归并排序** | $O(n \log n)$  | $O(n \log n)$ | $O(n \log n)$ |   $O(n)$    |  稳定  |
+| **快速排序** | $O(n \log n)$  | $O(n \log n)$ |   $O(n^2)$    | $O(\log n)$ | 不稳定 |
 
 #### 简单排序
 
-- **冒泡排序 (`bubbleSort`)**
+- **冒泡排序 (`BubbleSort`)**
   - **基础版本**：标准双重循环相邻元素比较与交换
   - **提前终止**：引入交换标志位若整轮无逆序对则提前退出
   - **边界优化**：记录每轮最后交换位置作为下一轮比较边界
-- **选择排序 (`selectionSort`)**
+- **选择排序 (`SelectionSort`)**
   - **算法思想**：每轮扫描未排序区间最小值交换至已排序序列尾部
-- **插入排序 (`insertionSort`)**
+- **插入排序 (`InsertionSort`)**
   - **算法思想**：将未排序元素向前扫描并插入到已排序序列合适位置
-- **希尔排序 (`shellSort`)**
+- **希尔排序 (`ShellSort`)**
   - **步长优化**：采用 Hibbard 增量序列分组跨步长插入使数组整体基本有序
 
 #### 高级排序
 
-- **归并排序 (`mergeSort`)**
+- **归并排序 (`MergeSort`)**
   - **分治合并**：经典分治递归双指针合并两个有序子数组且时间复杂度稳定
-- **快速排序 (`quickSort`)**
-  - **单边划分**：随机选取主元通过单指针维护小于基准值的边界区间
-  - **双边划分**：随机选取主元左右双指针相向扫描对调减少无效移动
+- **快速排序 (`QuickSort`)**
+  - **单边循环**：随机选取主元单向扫描维护小于基准值边界
+  - **双边循环**：随机选取主元左右双指针相向对撞扫描减少无效移动
 
 ---
 
