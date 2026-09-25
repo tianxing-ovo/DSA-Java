@@ -6,7 +6,7 @@ import static util.SwapUtil.swap;
 
 
 /**
- * 算法思想: 通过相邻元素的比较与交换将较大值逐步冒泡到数组末尾
+ * 冒泡排序: 通过相邻元素的比较与交换将较大值逐步冒泡到数组末尾
  *
  * @author tianxing
  */
@@ -14,14 +14,14 @@ public class BubbleSort {
 
     /**
      * 初始版本
-     * 外层循环次数: 数组长度 - 1
-     * 内层比较次数: 最后一个没有排序过元素的索引
      *
      * @param nums 待排序数组
      */
-    public static void bubbleSort(int[] nums) {
+    public static void sort(int[] nums) {
         int n = nums.length;
+        // i表示当前冒泡轮数
         for (int i = 1; i <= n - 1; i++) {
+            // j表示未排序区间中相邻元素两两比较的遍历索引
             for (int j = 0; j < n - i; j++) {
                 if (nums[j] > nums[j + 1]) {
                     swap(nums, j, j + 1);
@@ -36,7 +36,7 @@ public class BubbleSort {
      *
      * @param nums 待排序数组
      */
-    public static void bubbleSort_v1(int[] nums) {
+    public static void sort_v1(int[] nums) {
         int n = nums.length;
         boolean swapped;
         for (int i = 1; i <= n - 1; i++) {
@@ -60,7 +60,7 @@ public class BubbleSort {
      *
      * @param nums 待排序数组
      */
-    public static void bubbleSort_v2(int[] nums) {
+    public static void sort_v2(int[] nums) {
         int n = nums.length - 1;
         int i = 0;
         while (n > 0) {
