@@ -7,15 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * 布隆过滤器单元测试
+ * 布隆过滤器测试
  *
  * @author tianxing
  */
-public class BloomFilterTest {
+class BloomFilterTest {
 
     @Test
     @DisplayName("添加和存在性测试")
-    public void testAddAndMightContain() {
+    void addAndMightContain() {
         BloomFilter<String> filter = new BloomFilter<>(1000, 0.01);
         filter.add("apple");
         filter.add("banana");
@@ -33,7 +33,7 @@ public class BloomFilterTest {
 
     @Test
     @DisplayName("清空测试")
-    public void testClear() {
+    void clear() {
         BloomFilter<Integer> filter = new BloomFilter<>();
         // BloomFilter{bitSize=95850, hashFunctionCount=7}
         System.out.println(filter);
@@ -52,7 +52,7 @@ public class BloomFilterTest {
 
     @Test
     @DisplayName("误判率测试")
-    public void testFalsePositiveRate() {
+    void falsePositiveRate() {
         int expectedInsertions = 10000;
         double fpp = 0.01;
         BloomFilter<String> filter = new BloomFilter<>(expectedInsertions, fpp);

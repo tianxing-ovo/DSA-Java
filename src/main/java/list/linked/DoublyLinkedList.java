@@ -182,7 +182,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
+        return new Iterator<>() {
             Node<T> node = head;
             int index;
 

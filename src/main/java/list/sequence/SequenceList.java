@@ -160,8 +160,10 @@ public class SequenceList<T> implements Iterable<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            /** 指针 */
+        return new Iterator<>() {
+            /**
+             * 指针
+             */
             private int cursor;
 
             @Override

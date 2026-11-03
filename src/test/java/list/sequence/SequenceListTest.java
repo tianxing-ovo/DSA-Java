@@ -3,21 +3,22 @@ package list.sequence;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * 顺序表单元测试
+ * 顺序表测试
  *
  * @author tianxing
  */
-public class SequenceListTest {
+class SequenceListTest {
 
     @Test
-    @DisplayName("顺序表全功能测试")
-    public void test() {
+    @DisplayName("添加与查询测试")
+    void addAndGet() {
         SequenceList<String> list = new SequenceList<>(3);
         assertTrue(list.isEmpty());
-        // 添加元素
         list.add("a");
         list.add("b");
         list.add(1, "c");
@@ -28,23 +29,40 @@ public class SequenceListTest {
         assertEquals("b", list.get(2));
         assertEquals(1, list.indexOf("c"));
         assertEquals(-1, list.indexOf("z"));
-        assertEquals("[a, c, b]", list.toString());
         // [a, c, b]
         System.out.println(list);
+        assertEquals("[a, c, b]", list.toString());
+    }
+
+    @Test
+    @DisplayName("删除与清空测试")
+    void removeAndClear() {
+        SequenceList<String> list = new SequenceList<>(3);
+        list.add("a");
+        list.add("c");
+        list.add("b");
         assertEquals("c", list.remove(1));
+        assertEquals(2, list.size());
         // [a, b]
         System.out.println(list);
         assertEquals("[a, b]", list.toString());
-        // 遍历测试
-        StringBuilder sb = new StringBuilder();
-        for (String item : list) {
-            sb.append(item);
-        }
-        assertEquals("ab", sb.toString());
         list.clear();
         // []
         System.out.println(list);
         assertEquals("[]", list.toString());
         assertTrue(list.isEmpty());
+    }
+
+    @Test
+    @DisplayName("迭代器遍历测试")
+    void iterator() {
+        SequenceList<String> list = new SequenceList<>(3);
+        list.add("a");
+        list.add("b");
+        StringBuilder sb = new StringBuilder();
+        for (String item : list) {
+            sb.append(item);
+        }
+        assertEquals("ab", sb.toString());
     }
 }

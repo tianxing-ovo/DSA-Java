@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
- * 计数排序单元测试
+ * 计数排序测试
  *
  * @author tianxing
  */
