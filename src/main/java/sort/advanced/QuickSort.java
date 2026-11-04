@@ -10,6 +10,7 @@ import static util.SwapUtil.swap;
  *
  * @author tianxing
  */
+@SuppressWarnings("DuplicatedCode")
 public class QuickSort {
 
     /**
@@ -24,11 +25,9 @@ public class QuickSort {
         if (left >= right) {
             return;
         }
-        // 在区间[left, right]内随机选取基准值下标以防止数组有序时时间复杂度退化为O(n^2)
-        int pivotIndex = ThreadLocalRandom.current().nextInt(left, right + 1);
-        int pivot = nums[pivotIndex];
-        // 将随机选取的基准值交换至当前区间最右侧
-        swap(nums, pivotIndex, right);
+        // 在区间[left, right]内随机选取基准值并交换至当前区间最右侧
+        swap(nums, right, ThreadLocalRandom.current().nextInt(left, right + 1));
+        int pivot = nums[right];
         // 小于基准值的边界
         int i = left;
         for (int j = left; j < right; j++) {
@@ -58,18 +57,17 @@ public class QuickSort {
         if (left >= right) {
             return;
         }
-        // 在区间[left, right]内随机选取基准值下标以防止数组有序时时间复杂度退化为O(n^2)
-        int pivotIndex = ThreadLocalRandom.current().nextInt(left, right + 1);
-        int pivot = nums[pivotIndex];
-        // 将随机选取的基准值交换至当前区间最左侧
-        swap(nums, pivotIndex, left);
+        // 在区间[left, right]内随机选取基准值并交换至当前区间最左侧
+        swap(nums, left, ThreadLocalRandom.current().nextInt(left, right + 1));
+        int pivot = nums[left];
         int i = left + 1;
         int j = right;
         while (true) {
             while (i <= right && nums[i] < pivot) {
                 i++;
             }
-            while (j >= left + 1 && nums[j] > pivot) {
+            // nums[left]处的pivot天然充当左边界哨兵以防止j越界
+            while (nums[j] > pivot) {
                 j--;
             }
             if (i >= j) {
@@ -127,5 +125,64 @@ public class QuickSort {
         threeWay(nums, left, lt - 1);
         // 递归处理大于基准值部分
         threeWay(nums, gt + 1, right);
+    }
+
+    /**
+     * 双轴快排: 随机选取两个基准值(pivot1 <= pivot2)将数组划分为三部分并三路递归
+     * [left, lt - 1]   < pivot1
+     * [lt, gt]         >= pivot1 && <= pivot2
+     * [gt + 1, right]  > pivot2
+     *
+     * @param nums  待排序数组
+     * @param left  左边界
+     * @param right 右边界
+     */
+    public static void dualPivot(int[] nums, int left, int right) {
+        // 递归终止条件(区间为空或仅含单个元素)
+        if (left >= right) {
+            return;
+        }
+        // 在区间[left, right]内随机选取两个不同位置的基准值并分别交换至首尾位置
+        swap(nums, left, ThreadLocalRandom.current().nextInt(left, right + 1));
+        swap(nums, right, ThreadLocalRandom.current().nextInt(left + 1, right + 1));
+        // 确保左基准值小于等于右基准值(pivot1 <= pivot2)
+        if (nums[left] > nums[right]) {
+            swap(nums, left, right);
+        }
+        int pivot1 = nums[left];
+        int pivot2 = nums[right];
+        // 小于pivot1部分的右边界
+        int lt = left + 1;
+        // 大于pivot2部分的左边界
+        int gt = right - 1;
+        // 当前探索指针从左基准值右侧开始扫描
+        int i = left + 1;
+        while (i <= gt) {
+            if (nums[i] < pivot1) {
+                swap(nums, i, lt);
+                lt++;
+                i++;
+            } else if (nums[i] > pivot2) {
+                swap(nums, i, gt);
+                gt--;
+            } else {
+                i++;
+            }
+        }
+        // lt左移回退至小于pivot1区间的末尾位置
+        lt--;
+        // gt右移前进至大于pivot2区间的起始位置
+        gt++;
+        // 将首尾暂存的pivot1与pivot2交换至分界点归位
+        swap(nums, left, lt);
+        swap(nums, right, gt);
+        // 递归处理小于pivot1部分
+        dualPivot(nums, left, lt - 1);
+        // 若双轴不相等则递归处理中间部分(若相等说明中间区间元素全部相同无需递归)
+        if (pivot1 < pivot2) {
+            dualPivot(nums, lt + 1, gt - 1);
+        }
+        // 递归处理大于pivot2部分
+        dualPivot(nums, gt + 1, right);
     }
 }
