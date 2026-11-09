@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 15.三数之和
+ * 15. 三数之和
+ *
+ * @author tianxing
  */
-public class 三数之和 {
+public class ThreeSum {
     public static void main(String[] args) {
         // -4 -1 -1 0 1 2
         int[] nums = {-1, 0, 1, 2, -1, -4};
@@ -42,3 +44,4 @@ public class 三数之和 {
         return list;
     }
 }
+

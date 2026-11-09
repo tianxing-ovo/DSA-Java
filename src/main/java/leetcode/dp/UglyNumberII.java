@@ -3,9 +3,11 @@ package leetcode.dp;
 import java.util.PriorityQueue;
 
 /**
- * 264.丑数2
+ * 264. 丑数 II
+ *
+ * @author tianxing
  */
-public class 丑数2 {
+public class UglyNumberII {
     /**
      * 1
      * 2 3 5

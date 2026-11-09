@@ -4,9 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 128.最长连续序列
+ * 128. 最长连续序列
+ *
+ * @author tianxing
  */
-public class 最长连续序列 {
+public class LongestConsecutiveSequence {
     public static void main(String[] args) {
         // 100 4 200 1 3 2
         int[] nums = {100, 4, 200, 1, 3, 2};
@@ -36,3 +38,4 @@ public class 最长连续序列 {
         return len;
     }
 }
+

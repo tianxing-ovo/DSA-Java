@@ -1,11 +1,11 @@
 package leetcode.kmp;
 
 /**
- * 28.找出字符串中第一个匹配项的下标
+ * 28. 找出字符串中第一个匹配项的下标
  *
  * @author tianxing
  */
-public class 找出字符串中第一个匹配项的下标 {
+public class FindTheIndexOfTheFirstOccurrenceInAString {
     public static void main(String[] args) {
         // 文本串
         String haystack = "aabaabaaf";
@@ -51,3 +51,4 @@ public class 找出字符串中第一个匹配项的下标 {
         return -1;
     }
 }
+

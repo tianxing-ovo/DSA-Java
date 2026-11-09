@@ -3,9 +3,11 @@ package leetcode.pointer;
 import java.util.Arrays;
 
 /**
- * 283.移动零
+ * 283. 移动零
+ *
+ * @author tianxing
  */
-public class 移动零 {
+public class MoveZeroes {
     public static void main(String[] args) {
         int[] nums = {1, 0, 1};
         moveZeroes(nums);
@@ -30,3 +32,4 @@ public class 移动零 {
         }
     }
 }
+

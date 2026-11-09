@@ -3,9 +3,11 @@ package leetcode.greedy;
 import java.util.Arrays;
 
 /**
- * 1054.距离相等的条形码
+ * 1054. 距离相等的条形码
+ *
+ * @author tianxing
  */
-public class 距离相等的条形码 {
+public class DistantBarcodes {
     public static void main(String[] args) {
         int[] barcodes = {1, 1, 1, 1, 2, 2, 3, 3};
         System.out.println(Arrays.toString(rearrangeBarcodes(barcodes)));
@@ -41,3 +43,4 @@ public class 距离相等的条形码 {
         return barcodes;
     }
 }
+

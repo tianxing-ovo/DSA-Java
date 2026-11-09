@@ -1,6 +1,11 @@
 package leetcode.dp;
 
-public class 最大子数组和 {
+/**
+ * 53. 最大子数组和
+ *
+ * @author tianxing
+ */
+public class MaximumSubarray {
     public static void main(String[] args) {
         int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println(maxSubArray(nums));

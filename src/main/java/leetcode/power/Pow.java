@@ -1,7 +1,9 @@
 package leetcode.power;
 
 /**
- * 50.Pow(x, n)
+ * 50. Pow(x, n)
+ *
+ * @author tianxing
  */
 public class Pow {
     public static void main(String[] args) {

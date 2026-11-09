@@ -3,9 +3,11 @@ package leetcode.hash;
 import java.util.*;
 
 /**
- * 49.字母异位词分组
+ * 49. 字母异位词分组
+ *
+ * @author tianxing
  */
-public class 字母异位词分组 {
+public class GroupAnagrams {
     public static void main(String[] args) {
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
         System.out.println(groupAnagrams(strs));
@@ -24,3 +26,4 @@ public class 字母异位词分组 {
         return new ArrayList<>(map.values());
     }
 }
+
