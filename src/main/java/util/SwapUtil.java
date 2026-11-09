@@ -1,20 +1,11 @@
 package util;
 
-import java.util.Arrays;
-
 /**
  * 交换工具类
  *
  * @author tianxing
  */
 public class SwapUtil {
-    public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-        swap(nums, 0, 1);
-        swapIntegerMath(nums, 2, 3);
-        swapIntegerXOR(nums, 4, 5);
-        System.out.println(Arrays.toString(nums));
-    }
 
     /**
      * 中间变量法(通用)
