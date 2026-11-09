@@ -9,7 +9,6 @@ import java.util.Iterator;
  *
  * @author tianxing
  */
-@SuppressWarnings("unchecked")
 public class SequenceList<T> implements Iterable<T> {
 
     /**
@@ -27,6 +26,7 @@ public class SequenceList<T> implements Iterable<T> {
      *
      * @param capacity 初始容量
      */
+    @SuppressWarnings("unchecked")
     public SequenceList(int capacity) {
         elementData = (T[]) new Object[capacity];
     }
