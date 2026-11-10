@@ -14,28 +14,43 @@ public class DistantBarcodes {
     }
 
     /**
+     * 1 <= barcodes.length <= 10000
      * 1 <= barcodes[i] <= 10000
-     * 1.将出现频率最高的元素排在0,2,4...等索引
-     * 2.将其他元素按顺序插入,如果超出最大索引,从索引1开始插入
+     *
+     * @param barcodes 条形码数组
+     * @return 重新排列后的条形码数组
      */
     public static int[] rearrangeBarcodes(int[] barcodes) {
         int n = barcodes.length;
-        int max = 1; // 出现频率最高的元素
-        int[] count = new int[10001]; // 计数数组
+        // 出现频率最高的条形码
+        int mostFrequentBarcode = barcodes[0];
+        // 计数数组
+        int[] count = new int[10001];
+        // 当前索引
         int index = 0;
-        // 找出出现频率最高的元素
+        // 找出出现频率最高的条形码
         for (int barcode : barcodes) {
-            if (++count[barcode] > count[max]) {
-                max = barcode;
+            // 统计每个条形码出现的次数
+            count[barcode]++;
+            // 更新出现频率最高的条形码
+            if (count[barcode] > count[mostFrequentBarcode]) {
+                mostFrequentBarcode = barcode;
             }
         }
-        for (int i = 0; i < 10001; i++) {
-            // 先填充出现频率最高的元素
-            int barcode = (i == 0 ? max : i);
-            while (count[barcode]-- > 0) {
+        // 先把出现频率最高的条形码填充到偶数索引
+        while (count[mostFrequentBarcode] > 0) {
+            count[mostFrequentBarcode]--;
+            barcodes[index] = mostFrequentBarcode;
+            index += 2;
+        }
+        // 将其他元素按顺序插入
+        for (int barcode = 1; barcode <= 10000; barcode++) {
+            while (count[barcode] > 0) {
+                // 如果当前索引超出最大索引则从索引1开始插入
                 if (index >= n) {
                     index = 1;
                 }
+                count[barcode]--;
                 barcodes[index] = barcode;
                 index += 2;
             }
