@@ -37,9 +37,11 @@ public class DepthFirstSearch {
         marked[v] = true;
         // 连通顶点数量加1
         count++;
-        // 递归访问所有邻接顶点
+        // 遍历顶点v的所有邻接顶点w
         for (int w : graph.getNeighbors(v)) {
+            // 如果顶点w未被访问
             if (!marked[w]) {
+                // 递归访问顶点w
                 dfs(graph, w);
             }
         }
